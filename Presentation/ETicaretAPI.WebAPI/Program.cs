@@ -1,3 +1,6 @@
+using ETicaretAPI.Persistence;
+
+
 namespace ETicaretAPI.WebAPI
 {
     public class Program
@@ -12,7 +15,8 @@ namespace ETicaretAPI.WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            AppContext.SetSwitch("Npsql.EnableLegacyTimestampBehavior", true);
+            builder.Services.AddPersistenceServices();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
